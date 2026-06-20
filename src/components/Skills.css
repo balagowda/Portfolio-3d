@@ -1,0 +1,214 @@
+/* ============================================================
+   Skills Section – Dark Premium Theme
+   ============================================================ */
+
+/* ── section wrapper ── */
+.skills-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 120px 24px 100px;
+  background: radial-gradient(ellipse at 50% 0%, #1a103a 0%, #0a0a0f 70%);
+  overflow: hidden;
+}
+
+.skills-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ── heading ── */
+.skills-heading {
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+.skills-label {
+  display: inline-block;
+  font-size: 0.875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8b5cf6;
+  margin-bottom: 12px;
+}
+
+.skills-title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #f0f0f5;
+  margin: 0;
+}
+
+.skills-title-accent {
+  background: linear-gradient(135deg, #8b5cf6, #6366f1, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── categories ── */
+.skills-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.skills-category-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.skills-category-line {
+  display: inline-block;
+  width: 4px;
+  height: 28px;
+  border-radius: 4px;
+}
+
+.skills-category-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #e2e2ea;
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+/* ── grid ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── card ── */
+.skills-card {
+  position: relative;
+  border-radius: 16px;
+  cursor: pointer;
+  /* glassmorphism */
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+}
+
+.skills-card:hover {
+  border-color: var(--accent, rgba(139, 92, 246, 0.5));
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.35),
+    0 0 20px color-mix(in srgb, var(--accent, #8b5cf6) 30%, transparent);
+}
+
+/* subtle glow layer */
+.skills-card-glow {
+  --accent: #8b5cf6;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at 50% 0%,
+    color-mix(in srgb, var(--accent) 15%, transparent),
+    transparent 70%
+  );
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.skills-card:hover .skills-card-glow {
+  opacity: 1;
+}
+
+.skills-card-inner {
+  position: relative;
+  padding: 22px 20px;
+  z-index: 1;
+}
+
+/* ── card header (icon + name) ── */
+.skills-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.skills-card-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.skills-card-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e2e2ea;
+  letter-spacing: 0.01em;
+}
+
+/* ── proficiency bar ── */
+.skills-card-bar-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.skills-bar-track {
+  flex: 1;
+  height: 6px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.skills-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  width: 0%;
+  transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.skills-card-pct {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.55);
+  min-width: 36px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── responsive tweaks ── */
+@media (max-width: 600px) {
+  .skills-section {
+    padding: 80px 16px 64px;
+  }
+
+  .skills-heading {
+    margin-bottom: 48px;
+  }
+
+  .skills-categories {
+    gap: 40px;
+  }
+
+  .skills-card-inner {
+    padding: 18px 16px;
+  }
+}

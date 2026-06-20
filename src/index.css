@@ -1,0 +1,503 @@
+/* ============================================================
+   Portfolio 3D — Global Design System
+   Premium dark theme · Glassmorphism · Motion
+   ============================================================ */
+
+/* ---- Google Font ---- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ============================================================
+   1. CSS Custom Properties
+   ============================================================ */
+:root {
+  /* ---- Color: Backgrounds (Cyber Minimalist) ---- */
+  --color-bg-primary:    #050505;
+  --color-bg-secondary:  #0a0a0c;
+  --color-bg-tertiary:   #120e1f;
+  --color-bg-card:       #0d0d12;
+  --color-bg-elevated:   #15151e;
+
+  /* ---- Color: Accent — Neon Violet ---- */
+  --color-purple:        #7028e4;
+  --color-purple-deep:   #5b1eb5;
+  --color-purple-muted:  #9554ff;
+  --color-purple-soft:   rgba(112, 40, 228, 0.15);
+  --color-purple-glow:   rgba(112, 40, 228, 0.35);
+
+  /* ---- Color: Accent — Electric Cyan ---- */
+  --color-cyan:          #00f2fe;
+  --color-cyan-bright:   #45f3ff;
+  --color-cyan-soft:     rgba(0, 242, 254, 0.15);
+  --color-cyan-glow:     rgba(0, 242, 254, 0.30);
+
+  /* ---- Color: Text ---- */
+  --color-text-primary:   #ffffff;
+  --color-text-secondary: #9ca3af;
+  --color-text-muted:     #6b7280;
+  --color-text-dim:       #4b5563;
+
+  /* ---- Color: Borders & Surfaces ---- */
+  --color-border:         rgba(255, 255, 255, 0.04);
+  --color-border-hover:   rgba(255, 255, 255, 0.10);
+  --color-border-accent:  rgba(0, 242, 254, 0.25);
+  --color-surface:        rgba(255, 255, 255, 0.02);
+  --color-surface-hover:  rgba(255, 255, 255, 0.04);
+
+  /* ---- Glassmorphism Tokens ---- */
+  --glass-bg:             rgba(13, 13, 18, 0.50);
+  --glass-bg-heavy:       rgba(13, 13, 18, 0.70);
+  --glass-bg-light:       rgba(255, 255, 255, 0.02);
+  --glass-blur:           24px;
+  --glass-blur-heavy:     32px;
+  --glass-blur-light:     12px;
+  --glass-border:         rgba(255, 255, 255, 0.05);
+  --glass-border-accent:  rgba(0, 242, 254, 0.15);
+  --glass-shadow:         0 8px 32px rgba(0, 0, 0, 0.40);
+
+  /* ---- Spacing Scale (4px base) ---- */
+  --space-1:  0.25rem;   /*  4px */
+  --space-2:  0.5rem;    /*  8px */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-5:  1.25rem;   /* 20px */
+  --space-6:  1.5rem;    /* 24px */
+  --space-8:  2rem;      /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px */
+  --space-24: 6rem;      /* 96px */
+  --space-32: 8rem;      /* 128px */
+
+  /* ---- Border Radius Scale ---- */
+  --radius-sm:   6px;
+  --radius-md:   12px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
+  --radius-2xl:  40px;
+  --radius-full: 9999px;
+
+  /* ---- Typography ---- */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+               Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+
+  --text-xs:   0.75rem;    /* 12px */
+  --text-sm:   0.875rem;   /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg:   1.125rem;   /* 18px */
+  --text-xl:   1.25rem;    /* 20px */
+  --text-2xl:  1.5rem;     /* 24px */
+  --text-3xl:  1.875rem;   /* 30px */
+  --text-4xl:  2.25rem;    /* 36px */
+  --text-5xl:  3rem;       /* 48px */
+  --text-6xl:  3.75rem;    /* 60px */
+  --text-7xl:  4.5rem;     /* 72px */
+
+  --leading-tight:  1.15;
+  --leading-snug:   1.35;
+  --leading-normal: 1.6;
+
+  /* ---- Transitions ---- */
+  --ease-smooth:  cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-spring:  cubic-bezier(0.22, 1, 0.36, 1);
+
+  --duration-fast:    150ms;
+  --duration-normal:  300ms;
+  --duration-slow:    500ms;
+  --duration-slower:  800ms;
+
+  --transition-default: all var(--duration-normal) var(--ease-smooth);
+  --transition-fast:    all var(--duration-fast)   var(--ease-smooth);
+  --transition-slow:    all var(--duration-slow)   var(--ease-smooth);
+  --transition-bounce:  all var(--duration-normal) var(--ease-bounce);
+
+  /* ---- Z-Index Scale ---- */
+  --z-behind:   -1;
+  --z-base:      0;
+  --z-dropdown:  10;
+  --z-sticky:    20;
+  --z-overlay:   30;
+  --z-modal:     40;
+  --z-toast:     50;
+}
+
+
+/* ============================================================
+   2. Modern CSS Reset & Base
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-size: 16px;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: none;
+}
+
+button {
+  cursor: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+  line-height: var(--leading-tight);
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+
+/* ---- Selection ---- */
+::selection {
+  background: var(--color-purple);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background: var(--color-purple);
+  color: #ffffff;
+}
+
+
+/* ---- Custom Scrollbar ---- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-purple-deep);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-purple);
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-purple-deep) var(--color-bg-primary);
+}
+
+
+/* ============================================================
+   3. Utility Classes
+   ============================================================ */
+
+/* ---- Glassmorphism ---- */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-light {
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(var(--glass-blur-light));
+  -webkit-backdrop-filter: blur(var(--glass-blur-light));
+  border: 1px solid var(--glass-border);
+}
+
+.glass-heavy {
+  background: var(--glass-bg-heavy);
+  backdrop-filter: blur(var(--glass-blur-heavy));
+  -webkit-backdrop-filter: blur(var(--glass-blur-heavy));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+}
+
+
+/* ---- Gradient Text ---- */
+.gradient-text {
+  background: linear-gradient(
+    135deg,
+    var(--color-purple) 0%,
+    var(--color-purple-muted) 40%,
+    var(--color-cyan) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;               /* fallback */
+}
+
+.gradient-text-reverse {
+  background: linear-gradient(
+    135deg,
+    var(--color-cyan) 0%,
+    var(--color-purple) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+
+/* ---- Glow Effects ---- */
+.glow {
+  box-shadow:
+    0 0 15px var(--color-purple-glow),
+    0 0 45px rgba(145, 94, 255, 0.10);
+}
+
+.glow-cyan {
+  box-shadow:
+    0 0 15px var(--color-cyan-glow),
+    0 0 45px rgba(0, 212, 255, 0.10);
+}
+
+.glow-hover {
+  transition: box-shadow var(--duration-normal) var(--ease-smooth);
+}
+.glow-hover:hover {
+  box-shadow:
+    0 0 20px var(--color-purple-glow),
+    0 0 60px rgba(145, 94, 255, 0.15);
+}
+
+
+/* ---- Layout ---- */
+.section-padding {
+  padding-top: var(--space-24);
+  padding-bottom: var(--space-24);
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: var(--space-32);
+    padding-bottom: var(--space-32);
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+  }
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: var(--space-8);
+    padding-right: var(--space-8);
+  }
+}
+
+
+/* ============================================================
+   4. Keyframe Animations
+   ============================================================ */
+
+/* Gentle floating bob */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+/* Pulsing glow ring */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 12px var(--color-purple-glow),
+      0 0 40px rgba(145, 94, 255, 0.08);
+  }
+  50% {
+    box-shadow:
+      0 0 24px var(--color-purple-glow),
+      0 0 80px rgba(145, 94, 255, 0.18);
+  }
+}
+
+/* Slide up entrance */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Simple fade in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animated gradient background shift */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Typewriter cursor blink */
+@keyframes blink-caret {
+  0%, 100% {
+    border-right-color: var(--color-purple);
+  }
+  50% {
+    border-right-color: transparent;
+  }
+}
+
+/* Shimmer / loading skeleton */
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+/* Spin (for loaders) */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* ---- Animation Utility Classes ---- */
+.animate-float {
+  animation: float 5s var(--ease-smooth) infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s var(--ease-smooth) infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.7s var(--ease-spring) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s var(--ease-smooth) both;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+.animate-blink-caret {
+  border-right: 2px solid var(--color-purple);
+  animation: blink-caret 0.8s step-end infinite;
+}
+
+
+/* ============================================================
+   5. Common Component Primitives
+   ============================================================ */
+
+/* Subtle divider line */
+.divider {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-border-hover) 50%,
+    transparent
+  );
+}
+
+/* Section sub-heading accent bar */
+.accent-bar {
+  width: 60px;
+  height: 3px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(90deg, var(--color-purple), var(--color-cyan));
+}
+
+/* Responsive hidden helpers */
+@media (max-width: 767px) {
+  .hide-mobile { display: none !important; }
+}
+@media (min-width: 768px) {
+  .hide-desktop { display: none !important; }
+}

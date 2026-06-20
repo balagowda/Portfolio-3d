@@ -1,0 +1,294 @@
+/* ============================================================
+   Contact Section — Styles
+   ============================================================ */
+
+.contact {
+  position: relative;
+  padding: var(--space-24) 0;
+  overflow: hidden;
+}
+
+/* ---- Section Header ---- */
+.contact__label {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color-purple);
+  margin-bottom: var(--space-3);
+}
+
+.contact__title {
+  font-size: var(--text-5xl);
+  font-weight: 800;
+  margin-bottom: var(--space-16);
+}
+
+@media (max-width: 768px) {
+  .contact__title {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-10);
+  }
+}
+
+/* ---- Two-Column Grid ---- */
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+}
+
+/* ---- Left Column: Info ---- */
+.contact__info-heading {
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  margin-bottom: var(--space-4);
+  color: var(--color-text-primary);
+}
+
+.contact__info-text {
+  font-size: var(--text-lg);
+  line-height: var(--leading-normal);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-10);
+  max-width: 440px;
+}
+
+/* Contact detail items */
+.contact__details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  margin-bottom: var(--space-10);
+}
+
+.contact__detail-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  transition: var(--transition-default);
+}
+
+.contact__detail-icon {
+  font-size: var(--text-xl);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur-light));
+  -webkit-backdrop-filter: blur(var(--glass-blur-light));
+  border: 1px solid var(--glass-border);
+  flex-shrink: 0;
+}
+
+.contact__detail-item:hover {
+  color: var(--color-text-primary);
+}
+
+.contact__detail-item:hover .contact__detail-icon {
+  border-color: var(--color-purple);
+  box-shadow: 0 0 18px var(--color-purple-glow);
+}
+
+/* Social links row */
+.contact__socials {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.contact__social-link {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  font-size: var(--text-xl);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: var(--transition-default);
+  text-decoration: none;
+}
+
+.contact__social-link:hover {
+  color: var(--color-text-primary);
+  border-color: var(--color-purple);
+  box-shadow:
+    0 0 20px var(--color-purple-glow),
+    0 0 60px rgba(145, 94, 255, 0.12);
+  transform: translateY(-3px);
+}
+
+/* ---- Right Column: Form Card ---- */
+.contact__form-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur-heavy));
+  -webkit-backdrop-filter: blur(var(--glass-blur-heavy));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-10);
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle top-accent glow inside card */
+.contact__form-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-purple) 30%,
+    var(--color-cyan) 70%,
+    transparent
+  );
+}
+
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* Field group */
+.contact__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.contact__label-text {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  letter-spacing: 0.5px;
+}
+
+.contact__input,
+.contact__textarea {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-base);
+  color: var(--color-text-primary);
+  background: rgba(5, 8, 22, 0.7);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: var(--transition-default);
+}
+
+.contact__input::placeholder,
+.contact__textarea::placeholder {
+  color: var(--color-text-dim);
+}
+
+.contact__input:focus,
+.contact__textarea:focus {
+  border-color: var(--color-purple);
+  box-shadow:
+    0 0 0 3px var(--color-purple-soft),
+    0 0 20px rgba(145, 94, 255, 0.15);
+}
+
+.contact__textarea {
+  min-height: 140px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+/* Submit button */
+.contact__submit {
+  width: 100%;
+  padding: var(--space-4) var(--space-8);
+  font-size: var(--text-base);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--color-purple), var(--color-cyan));
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition-default);
+  position: relative;
+  overflow: hidden;
+  margin-top: var(--space-2);
+}
+
+.contact__submit:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 25px var(--color-purple-glow),
+    0 0 60px rgba(0, 212, 255, 0.2);
+}
+
+.contact__submit:active {
+  transform: translateY(0);
+}
+
+/* Animated shimmer on button */
+.contact__submit::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.contact__submit:hover::after {
+  left: 100%;
+}
+
+/* ---- Background decoration ---- */
+.contact__bg-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(140px);
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.contact__bg-glow--purple {
+  background: var(--color-purple);
+  top: 0;
+  right: -200px;
+}
+
+.contact__bg-glow--cyan {
+  background: var(--color-cyan);
+  bottom: -100px;
+  left: -200px;
+}

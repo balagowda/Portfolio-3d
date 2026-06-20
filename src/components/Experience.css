@@ -1,0 +1,343 @@
+/* ============================================================
+   Experience Section — Timeline Layout
+   Premium dark theme · Glassmorphism · Alternating cards
+   ============================================================ */
+
+/* ---- Section Container ---- */
+.experience {
+  position: relative;
+  padding: var(--space-24) var(--space-6);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .experience {
+    padding: var(--space-32) var(--space-8);
+  }
+}
+
+.experience__inner {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ---- Section Header ---- */
+.experience__label {
+  display: inline-block;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-purple);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+}
+
+.experience__title {
+  font-size: var(--text-4xl);
+  font-weight: 800;
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .experience__title {
+    font-size: var(--text-5xl);
+  }
+}
+
+.experience__subtitle {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  max-width: 560px;
+  line-height: var(--leading-normal);
+  margin-bottom: var(--space-16);
+}
+
+/* ============================================================
+   Timeline Structure
+   ============================================================ */
+.timeline {
+  position: relative;
+  padding: var(--space-8) 0;
+}
+
+/* ---- Vertical Line ---- */
+.timeline__line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    180deg,
+    var(--color-purple) 0%,
+    var(--color-purple-muted) 40%,
+    var(--color-cyan) 100%
+  );
+  transform-origin: top center;
+  /* Left-aligned on mobile */
+  left: 20px;
+}
+
+@media (min-width: 768px) {
+  .timeline__line {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* ============================================================
+   Timeline Entry
+   ============================================================ */
+.timeline__entry {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--space-12);
+  /* Mobile: all left-aligned, padded past the line */
+  padding-left: 52px;
+}
+
+.timeline__entry:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .timeline__entry {
+    padding-left: 0;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  /* Even entries: card on the RIGHT */
+  .timeline__entry--right {
+    justify-content: flex-end;
+  }
+}
+
+/* ---- Timeline Dot ---- */
+.timeline__dot {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-primary);
+  border: 3px solid var(--color-purple);
+  box-shadow:
+    0 0 12px var(--color-purple-glow),
+    0 0 30px rgba(145, 94, 255, 0.12);
+  z-index: 2;
+  /* Mobile position */
+  left: 12px;
+  top: 28px;
+}
+
+@media (min-width: 768px) {
+  .timeline__dot {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* ---- Connector Line (horizontal) ---- */
+.timeline__connector {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .timeline__connector {
+    display: block;
+    position: absolute;
+    top: 36px;
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      var(--color-purple-glow),
+      var(--color-purple)
+    );
+    z-index: 1;
+  }
+
+  /* LEFT card → connector goes RIGHT toward center */
+  .timeline__entry--left .timeline__connector {
+    right: calc(50% - 50px);
+    left: auto;
+  }
+
+  /* RIGHT card → connector goes LEFT toward center */
+  .timeline__entry--right .timeline__connector {
+    left: calc(50% - 50px);
+    right: auto;
+    background: linear-gradient(
+      90deg,
+      var(--color-purple),
+      var(--color-purple-glow)
+    );
+  }
+}
+
+/* ============================================================
+   Timeline Card
+   ============================================================ */
+.timeline__card {
+  position: relative;
+  width: 100%;
+  padding: var(--space-6) var(--space-6) var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition:
+    border-color var(--duration-normal) var(--ease-smooth),
+    box-shadow var(--duration-normal) var(--ease-smooth),
+    transform var(--duration-normal) var(--ease-smooth);
+}
+
+.timeline__card:hover {
+  border-color: var(--color-border-accent);
+  box-shadow:
+    var(--glass-shadow),
+    0 0 20px rgba(145, 94, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .timeline__card {
+    width: calc(50% - 60px);
+  }
+}
+
+/* ---- Card Header ---- */
+.timeline__duration {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-3);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.timeline__duration-icon {
+  width: 12px;
+  height: 12px;
+  opacity: 0.6;
+}
+
+.timeline__role {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: var(--leading-snug);
+  margin-bottom: var(--space-1);
+}
+
+@media (min-width: 768px) {
+  .timeline__role {
+    font-size: var(--text-2xl);
+  }
+}
+
+.timeline__company {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--color-purple);
+  margin-bottom: var(--space-4);
+}
+
+/* ---- Card Description ---- */
+.timeline__description {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal);
+  margin-bottom: var(--space-4);
+}
+
+/* ---- Bullet Points ---- */
+.timeline__points {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.timeline__point {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal);
+}
+
+.timeline__point-dot {
+  flex-shrink: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: var(--radius-full);
+  background: linear-gradient(
+    135deg,
+    var(--color-purple),
+    var(--color-cyan)
+  );
+  margin-top: 7px;
+  box-shadow: 0 0 6px var(--color-purple-glow);
+}
+
+/* ============================================================
+   Dot Glow Pulse Animation
+   ============================================================ */
+@keyframes dot-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 12px var(--color-purple-glow),
+      0 0 30px rgba(145, 94, 255, 0.12);
+  }
+  50% {
+    box-shadow:
+      0 0 20px var(--color-purple-glow),
+      0 0 50px rgba(145, 94, 255, 0.22);
+  }
+}
+
+.timeline__dot {
+  animation: dot-pulse 3s var(--ease-smooth) infinite;
+}
+
+/* ============================================================
+   Responsive: Mobile Refinements
+   ============================================================ */
+@media (max-width: 767px) {
+  .timeline__card {
+    padding: var(--space-5) var(--space-4) var(--space-4);
+  }
+
+  .timeline__role {
+    font-size: var(--text-lg);
+  }
+
+  .timeline__company {
+    font-size: var(--text-sm);
+  }
+
+  .timeline__description {
+    font-size: var(--text-xs);
+  }
+
+  .timeline__point {
+    font-size: var(--text-xs);
+  }
+
+  .experience__subtitle {
+    font-size: var(--text-base);
+  }
+}
