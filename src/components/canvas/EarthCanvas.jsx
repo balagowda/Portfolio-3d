@@ -58,16 +58,12 @@ const FlyingArc = ({ curve, speed, delay, color }) => {
 
   return (
     <group>
-      {/* Animated flying pulse segment as a dotted/dashed line */}
+      {/* Animated flying pulse segment as a solid line */}
       {isPulseActive && pulsePoints.length >= 2 && (
         <Line
           points={pulsePoints}
           color={color}
           lineWidth={2.5}
-          dashed
-          dashScale={30}
-          dashSize={0.4}
-          dashGap={0.3}
           transparent
           opacity={opacity}
         />
@@ -90,10 +86,10 @@ const Earth = () => {
 
   const signals = useMemo(() => {
     const points = [];
-    const numPoints = 24;
+    const numPoints = 12; // Reduced endpoints for 6 distributed connections
     const phi = Math.PI * (3 - Math.sqrt(5)); // Golden angle
 
-    // Generate 24 evenly distributed points on the unit sphere
+    // Generate 12 evenly distributed points on the unit sphere
     for (let i = 0; i < numPoints; i++) {
       const y = 1 - (i / (numPoints - 1)) * 2;
       const radius = Math.sqrt(1 - y * y);
@@ -104,14 +100,14 @@ const Earth = () => {
     }
 
     const connections = [];
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 6; i++) {
       const start = points[i];
-      // Offset by 11 to ensure we connect distant points across the globe
-      const end = points[(i + 11) % numPoints];
+      // Offset by 5 to connect distant points across the globe
+      const end = points[(i + 5) % numPoints];
       
       const height = 1.2 + (i % 3) * 0.4;      // Alternate heights: 1.2, 1.6, 2.0
       const speed = 0.35 + (i % 4) * 0.08;     // Alternate speeds
-      const delay = (i * 0.15) % 1.4;          // Alternate delays
+      const delay = (i * 0.25) % 1.4;          // Alternate delays
       const color = i % 2 === 0 ? '#00f2fe' : '#915eff'; // Alternate colors
 
       connections.push({
