@@ -111,12 +111,15 @@ export default function About() {
 
         {/* ── Two-column grid ── */}
         <div className="about__grid">
-          {/* Left — Profile Image Placeholder */}
+          {/* Left — Profile Image */}
           <motion.div className="about__image-wrapper" variants={fadeLeft}>
             <div className="about__profile">
               <div className="about__profile-inner">
-                <span className="about__initials">BG</span>
-                <span className="about__profile-tag">Developer</span>
+                <img
+                  src="/profile.jpg"
+                  alt="Bala"
+                  className="about__profile-img"
+                />
               </div>
             </div>
           </motion.div>
