@@ -233,6 +233,19 @@ export default function Contact() {
           >
             <EarthCanvas />
           </motion.div>
+
+          {/* ---- Tagline (to the right of Earth) ---- */}
+          <motion.div
+            className="contact__tagline-card"
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <p className="contact__tagline">
+              Experience working with a distributed team.
+            </p>
+          </motion.div>
         </div>
       </div>
     </section>

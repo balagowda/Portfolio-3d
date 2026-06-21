@@ -292,3 +292,38 @@
   bottom: -100px;
   left: -200px;
 }
+
+/* ---- Tagline next to Earth ---- */
+.contact__tagline-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 400px;
+  padding: var(--space-6);
+}
+
+.contact__tagline {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-text-primary);
+  text-align: left;
+  border-left: 4px solid var(--color-purple);
+  padding-left: var(--space-6);
+  background: linear-gradient(135deg, #ffffff 0%, #c0b3f0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (max-width: 900px) {
+  .contact__tagline-card {
+    min-height: auto;
+    padding: var(--space-4) 0;
+  }
+  .contact__tagline {
+    font-size: var(--text-xl);
+    padding-left: var(--space-4);
+  }
+}
