@@ -11,29 +11,29 @@ const createArc = (startVec, endVec, height = 0.5) => {
   const mid = start.clone().add(end).normalize().multiplyScalar(2.5 + height);
   return new THREE.QuadraticBezierCurve3(start, mid, end);
 };
-
 const FlyingArc = ({ curve, speed, delay, color }) => {
   const divisions = 24;
-  const trailLength = 0.2; // Length of the flying pulse segment (20% of curve)
+  const duration = 1.0; // Time to draw the line
+  const pause = 0.4;    // Time it stays visible and fades out
+  const cycleTime = duration + pause; // Total cycle duration
   
-  const fullPoints = useMemo(() => {
-    if (!curve) return [];
-    return curve.getPoints(divisions);
-  }, [curve]);
-
   const [pulsePoints, setPulsePoints] = useState(() => {
     if (!curve) return [];
     return Array.from({ length: divisions + 1 }, () => curve.getPointAt(0));
   });
 
+  const [opacity, setOpacity] = useState(0.8);
+
   useFrame((state) => {
     if (!curve) return;
     const time = state.clock.getElapsedTime();
-    // Cycle t from 0 to 1 + trailLength so it can fully disappear at the end
-    const t = (time * speed + delay) % (1 + trailLength);
+    const cycle = (time * speed + delay) % cycleTime;
     
-    const tail = Math.max(0, t - trailLength);
-    const head = Math.min(1, t);
+    // progress goes from 0 to 1 during the drawing phase
+    const progress = Math.min(1.0, cycle / duration);
+    
+    const tail = 0;
+    const head = progress;
     
     const newPoints = [];
     for (let i = 0; i <= divisions; i++) {
@@ -41,34 +41,35 @@ const FlyingArc = ({ curve, speed, delay, color }) => {
       newPoints.push(curve.getPointAt(sampleT));
     }
     setPulsePoints(newPoints);
+
+    // Calculate opacity: 0.8 during drawing, then fade to 0 during pause
+    let newOpacity = 0.8;
+    if (cycle > duration) {
+      const fadeProgress = (cycle - duration) / pause;
+      newOpacity = 0.8 * (1 - fadeProgress);
+    }
+    setOpacity(newOpacity);
   });
 
   if (!curve || !pulsePoints || pulsePoints.length === 0) return null;
 
-  // Only render pulse if it has actual length to prevent static dots at start/end
+  // Only render if the line has actual length to prevent static dots at start/end
   const isPulseActive = pulsePoints[0] && pulsePoints[divisions] && pulsePoints[0].distanceTo(pulsePoints[divisions]) > 0.05;
 
   return (
     <group>
-      {/* Faint static base path */}
-      {fullPoints && fullPoints.length >= 2 && (
-        <Line
-          points={fullPoints}
-          color={color}
-          lineWidth={1}
-          transparent
-          opacity={0.18}
-        />
-      )}
-
-      {/* Bright moving pulse segment */}
+      {/* Animated flying pulse segment as a dotted/dashed line */}
       {isPulseActive && pulsePoints.length >= 2 && (
         <Line
           points={pulsePoints}
           color={color}
-          lineWidth={3.0}
+          lineWidth={2.5}
+          dashed
+          dashScale={30}
+          dashSize={0.4}
+          dashGap={0.3}
           transparent
-          opacity={0.9}
+          opacity={opacity}
         />
       )}
     </group>
