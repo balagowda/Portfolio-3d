@@ -1,4 +1,4 @@
-import { Suspense, useRef, useState, useMemo } from 'react';
+import { Suspense, useRef, useState, useEffect, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Preload, Float, Sparkles, Html, Decal, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
@@ -96,20 +96,35 @@ const Planet = ({ data }) => {
 };
 
 const OrbitCanvas = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
+    setIsMobile(mediaQuery.matches);
+    const handleMediaQueryChange = (event) => setIsMobile(event.matches);
+    mediaQuery.addEventListener('change', handleMediaQueryChange);
+    return () => mediaQuery.removeEventListener('change', handleMediaQueryChange);
+  }, []);
+
+  const cameraPosition = isMobile ? [0, 12, 28] : [0, 8, 20];
+  const groupScale = isMobile ? 0.55 : 0.85;
+
   return (
     <Canvas
       frameloop="always"
-      camera={{ position: [0, 8, 15], fov: 45 }}
+      camera={{ position: cameraPosition, fov: 45 }}
       gl={{ preserveDrawingBuffer: true, antialias: true }}
     >
       <Suspense fallback={<CanvasLoader />}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1.5} color="#00f2fe" />
         
-        {/* Render all planets */}
-        {planetsData.map((planet, idx) => (
-          <Planet key={idx} data={planet} />
-        ))}
+        {/* Render all planets inside a scaled group */}
+        <group scale={groupScale}>
+          {planetsData.map((planet, idx) => (
+            <Planet key={idx} data={planet} />
+          ))}
+        </group>
 
         {/* Background stars */}
         <Sparkles count={300} scale={20} size={2} speed={0.2} color="#7028e4" />
