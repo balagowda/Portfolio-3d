@@ -48,7 +48,7 @@ const InteractiveText = ({ isMobile }) => {
           <meshStandardMaterial
             color="#ffffff"
             emissive="#1aacb3"
-            emissiveIntensity={0.3}
+            emissiveIntensity={0.40}
             roughness={0.1}
             metalness={0.8}
           />
