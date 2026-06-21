@@ -90,29 +90,29 @@ const Earth = () => {
   const signals = useMemo(() => {
     const connections = [
       // North America to Europe
-      { start: [1.2, 1.8, 1.2], end: [-1.0, 1.8, -1.0], height: 0.4, speed: 0.5, delay: 0.0, color: '#00f2fe' },
+      { start: [1.2, 1.8, 1.2], end: [-1.0, 1.8, -1.0], height: 1.5, speed: 0.5, delay: 0.0, color: '#00f2fe' },
       // North America to Asia
-      { start: [1.2, 1.8, 1.2], end: [-1.8, 1.0, 1.2], height: 0.6, speed: 0.4, delay: 0.2, color: '#915eff' },
+      { start: [1.2, 1.8, 1.2], end: [-1.8, 1.0, 1.2], height: 2.2, speed: 0.4, delay: 0.2, color: '#915eff' },
       // Europe to Asia
-      { start: [-1.0, 1.8, -1.0], end: [-1.8, 1.0, 1.2], height: 0.5, speed: 0.6, delay: 0.4, color: '#00f2fe' },
+      { start: [-1.0, 1.8, -1.0], end: [-1.8, 1.0, 1.2], height: 1.8, speed: 0.6, delay: 0.4, color: '#00f2fe' },
       // Europe to Africa
-      { start: [-1.0, 1.8, -1.0], end: [-0.5, 0.2, -2.2], height: 0.3, speed: 0.5, delay: 0.6, color: '#915eff' },
+      { start: [-1.0, 1.8, -1.0], end: [-0.5, 0.2, -2.2], height: 1.2, speed: 0.5, delay: 0.6, color: '#915eff' },
       // Asia to Australia
-      { start: [-1.8, 1.0, 1.2], end: [-1.5, -1.5, 1.5], height: 0.4, speed: 0.4, delay: 0.1, color: '#00f2fe' },
+      { start: [-1.8, 1.0, 1.2], end: [-1.5, -1.5, 1.5], height: 1.6, speed: 0.4, delay: 0.1, color: '#00f2fe' },
       // North America to South America
-      { start: [1.2, 1.8, 1.2], end: [1.0, -1.5, 1.5], height: 0.5, speed: 0.5, delay: 0.3, color: '#915eff' },
+      { start: [1.2, 1.8, 1.2], end: [1.0, -1.5, 1.5], height: 1.9, speed: 0.5, delay: 0.3, color: '#915eff' },
       // South America to Africa
-      { start: [1.0, -1.5, 1.5], end: [-0.5, 0.2, -2.2], height: 0.6, speed: 0.4, delay: 0.5, color: '#00f2fe' },
+      { start: [1.0, -1.5, 1.5], end: [-0.5, 0.2, -2.2], height: 2.1, speed: 0.4, delay: 0.5, color: '#00f2fe' },
       // Africa to Asia
-      { start: [-0.5, 0.2, -2.2], end: [-1.8, 1.0, 1.2], height: 0.5, speed: 0.5, delay: 0.7, color: '#915eff' },
+      { start: [-0.5, 0.2, -2.2], end: [-1.8, 1.0, 1.2], height: 1.7, speed: 0.5, delay: 0.7, color: '#915eff' },
       // South America to Antarctica/South
-      { start: [1.0, -1.5, 1.5], end: [0.0, -2.4, 0.5], height: 0.3, speed: 0.6, delay: 0.2, color: '#00f2fe' },
+      { start: [1.0, -1.5, 1.5], end: [0.0, -2.4, 0.5], height: 1.3, speed: 0.6, delay: 0.2, color: '#00f2fe' },
       // North America to Hawaii/Pacific
-      { start: [1.2, 1.8, 1.2], end: [2.2, 0.5, 0.8], height: 0.4, speed: 0.4, delay: 0.4, color: '#915eff' },
+      { start: [1.2, 1.8, 1.2], end: [2.2, 0.5, 0.8], height: 1.5, speed: 0.4, delay: 0.4, color: '#915eff' },
       // Europe to South America
-      { start: [-1.0, 1.8, -1.0], end: [1.0, -1.5, 1.5], height: 0.7, speed: 0.3, delay: 0.1, color: '#00f2fe' },
+      { start: [-1.0, 1.8, -1.0], end: [1.0, -1.5, 1.5], height: 2.4, speed: 0.3, delay: 0.1, color: '#00f2fe' },
       // Australia to North America
-      { start: [-1.5, -1.5, 1.5], end: [1.2, 1.8, 1.2], height: 0.8, speed: 0.35, delay: 0.5, color: '#915eff' }
+      { start: [-1.5, -1.5, 1.5], end: [1.2, 1.8, 1.2], height: 2.6, speed: 0.35, delay: 0.5, color: '#915eff' }
     ];
 
     return connections.map((conn) => ({
