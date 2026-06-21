@@ -76,7 +76,7 @@ const Earth = () => {
   const earthGroupRef = useRef();
   
   // Load the downloaded earth texture
-  const colorMap = useTexture('/earth-texture.jpg');
+  const colorMap = useTexture(`${import.meta.env.BASE_URL}earth-texture.jpg`);
 
   useFrame(() => {
     if (earthGroupRef.current) {

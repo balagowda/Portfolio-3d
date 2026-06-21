@@ -7,8 +7,8 @@ const skillsData = [
     category: 'Backend',
     color: '#f97316',
     skills: [
-      { name: 'Java', icon: '/tech/java.svg', proficiency: 90 },
-      { name: 'Spring Boot', icon: '/tech/spring.svg', proficiency: 85 },
+      { name: 'Java', icon: 'tech/java.svg', proficiency: 90 },
+      { name: 'Spring Boot', icon: 'tech/spring.svg', proficiency: 85 },
       { name: 'Microservices', icon: '🧩', proficiency: 80 },
       { name: 'REST APIs', icon: '🔗', proficiency: 88 },
     ],
@@ -17,7 +17,7 @@ const skillsData = [
     category: 'Database',
     color: '#3b82f6',
     skills: [
-      { name: 'MySQL', icon: '/tech/mysql.svg', proficiency: 80 },
+      { name: 'MySQL', icon: 'tech/mysql.svg', proficiency: 80 },
       { name: 'PostgreSQL', icon: '🐘', proficiency: 78 },
       { name: 'MongoDB', icon: '🍃', proficiency: 75 },
       { name: 'Redis', icon: '⚡', proficiency: 72 },
@@ -27,8 +27,8 @@ const skillsData = [
     category: 'Cloud & DevOps',
     color: '#8b5cf6',
     skills: [
-      { name: 'AWS', icon: '/tech/aws.svg', proficiency: 75 },
-      { name: 'Docker', icon: '/tech/docker.svg', proficiency: 80 },
+      { name: 'AWS', icon: 'tech/aws.svg', proficiency: 75 },
+      { name: 'Docker', icon: 'tech/docker.svg', proficiency: 80 },
       { name: 'Kubernetes', icon: '⎈', proficiency: 70 },
       { name: 'CI/CD', icon: '🔄', proficiency: 76 },
     ],
@@ -37,9 +37,9 @@ const skillsData = [
     category: 'Tools & Others',
     color: '#10b981',
     skills: [
-      { name: 'Git', icon: '/tech/git.svg', proficiency: 88 },
+      { name: 'Git', icon: 'tech/git.svg', proficiency: 88 },
       { name: 'Linux', icon: '🐧', proficiency: 82 },
-      { name: 'React', icon: '/tech/react.svg', proficiency: 85 },
+      { name: 'React', icon: 'tech/react.svg', proficiency: 85 },
       { name: 'VS Code', icon: '🔷', proficiency: 84 },
     ],
   },

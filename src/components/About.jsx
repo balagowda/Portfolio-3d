@@ -116,7 +116,7 @@ export default function About() {
             <div className="about__profile">
               <div className="about__profile-inner">
                 <img
-                  src="/profile.jpg"
+                  src={`${import.meta.env.BASE_URL}profile.jpg`}
                   alt="Bala"
                   className="about__profile-img"
                 />

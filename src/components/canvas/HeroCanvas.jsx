@@ -34,7 +34,7 @@ const InteractiveText = ({ isMobile }) => {
     <group ref={textRef}>
       <Center key={`bala-${isMobile}-${balaSize}`} position={[0, isMobile ? 0.8 : 0.8, 0]}>
         <Text3D
-          font="/fonts/helvetiker_bold.typeface.json"
+          font={`${import.meta.env.BASE_URL}fonts/helvetiker_bold.typeface.json`}
           size={balaSize}
           letterSpacing={isMobile ? 0.03 : 0}
           height={0.2}
@@ -57,7 +57,7 @@ const InteractiveText = ({ isMobile }) => {
       </Center>
       <Center key={`software-${isMobile}-${softwareSize}`} position={[0, isMobile ? 0.46 : -0.1, 0]}>
         <Text3D
-          font="/fonts/helvetiker_bold.typeface.json"
+          font={`${import.meta.env.BASE_URL}fonts/helvetiker_bold.typeface.json`}
           size={softwareSize}
           height={0.1}
           curveSegments={12}
