@@ -36,8 +36,8 @@ function AnimatedNumber({ value, suffix = '', duration = 2 }) {
 
 /* ── Stat data ────────────────────────────────────── */
 const stats = [
-  { value: 3, suffix: '+', label: 'Years Experience' },
-  { value: 15, suffix: '+', label: 'Projects Completed' },
+  { value: 2, suffix: '+', label: 'Years Experience' },
+  { value: 10, suffix: '+', label: 'Projects Completed' },
   { value: 5, suffix: '+', label: 'Technologies Mastered' },
   { value: 1, suffix: '', label: 'AWS Certification' },
 ];

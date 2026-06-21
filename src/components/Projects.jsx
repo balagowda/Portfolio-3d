@@ -5,39 +5,39 @@ import './Projects.css';
 const projectsData = [
   {
     num: '01',
-    title: 'E-Commerce Microservices Platform',
+    title: 'Amazon Clone',
     description:
-      'A scalable microservices architecture built with Spring Boot, featuring service discovery, API gateway, and event-driven communication.',
-    tags: ['Java', 'Spring Boot', 'Microservices', 'Docker', 'RabbitMQ'],
-    github: '#',
+      'Amazon Clone is a personal portfolio project designed to simulate an e-commerce platform with an intuitive interface and core shopping features.',
+    tags: ['React', 'CSS', 'JavaScript', 'MongoDB', 'NodeJs'],
+    github: 'https://github.com/balagowda/Mern-Stack-web',
     live: '#',
   },
   {
     num: '02',
-    title: 'Cloud Infrastructure Automation',
+    title: 'YouTube Clone',
     description:
-      'Automated AWS infrastructure provisioning using CloudFormation and CI/CD pipelines for seamless deployment workflows.',
-    tags: ['AWS', 'CloudFormation', 'Jenkins', 'Docker'],
-    github: '#',
-    live: '#',
+      'Simulate a video-sharing platform and understand real-world app flow.',
+    tags: ['React', 'CSS', 'JavaScript', 'Firebase'],
+    github: 'https://github.com/balagowda/Youtube-clone',
+    live: 'https://balagowda-yt-clone.web.app/login',
   },
   {
     num: '03',
-    title: 'Real-time Analytics Dashboard',
+    title: 'Customer Returns',
     description:
-      'A high-performance analytics dashboard with real-time data streaming, built with React frontend and Spring Boot backend.',
-    tags: ['React', 'Spring Boot', 'WebSocket', 'MySQL'],
-    github: '#',
-    live: '#',
+      'Automated System for Material Return from Customer. And Collaborated with Other Developer',
+    tags: ['React', 'CSS', 'JavaScript', 'Firebase'],
+    github: 'https://github.com/balagowda/Customer-Returns',
+    live: 'https://customerreturn-97bdd.web.app/',
   },
   {
     num: '04',
-    title: 'RESTful API Gateway',
+    title: 'DSA Prep',
     description:
-      'A centralized API gateway handling authentication, rate limiting, and request routing for distributed microservices.',
-    tags: ['Java', 'Spring Cloud', 'Redis', 'JWT'],
-    github: '#',
-    live: '#',
+      'Track DSA Preparation with notes, tips and reminder with customisation.',
+    tags: ['Java', 'Spring boot', 'JWT', 'MySQL', 'React', 'CSS'],
+    github: 'https://github.com/balagowda/DSA-Prep_back-end',
+    live: 'https://github.com/balagowda/DSA-Prep_front-end',
   },
 ];
 

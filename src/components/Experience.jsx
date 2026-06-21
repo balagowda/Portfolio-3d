@@ -8,38 +8,38 @@ import './Experience.css';
 const experiences = [
   {
     role: 'Software Developer',
-    company: 'Accenture',
-    duration: 'Jan 2022 – Present',
+    company: 'TCS',
+    duration: 'Jan 2025 – Present',
     description:
       'Developing and maintaining enterprise-grade microservices using Java and Spring Boot. Implementing cloud-native solutions on AWS. Collaborating with cross-functional teams to deliver high-quality software.',
     points: [
       'Built RESTful APIs serving 10K+ requests/day',
-      'Reduced deployment time by 40% with CI/CD automation',
-      'Mentored junior developers on best practices',
+      'Delivered end-to-end backend solutions including testing and API validation.',
+      'Collaborate effectively in Agile teams to ensure high-quality delivery.',
+      'Gained AWS Cloud Practitioner certification.'
     ],
   },
   {
-    role: 'Junior Developer',
-    company: 'Tech Solutions Inc.',
-    duration: 'Jun 2021 – Dec 2021',
+    role: 'Open Source Developer',
+    company: 'Layer5.io',
+    duration: 'Apr 2024 – Dec 2024',
     description:
-      'Started career building backend services and learning enterprise development practices.',
+      'Hands-on experience in front-end development during contribution period.',
     points: [
-      'Developed internal tools using Java and MySQL',
-      'Participated in code reviews and agile ceremonies',
-      'Gained AWS Cloud Practitioner certification',
+      'Focused on improving user experience',
+      'Enhancing front-end functionality',
+      'Collaborating with the community through effective debugging and knowledge sharing',
     ],
   },
   {
-    role: 'Software Engineering Intern',
-    company: 'StartupXYZ',
-    duration: 'Jan 2021 – May 2021',
+    role: 'Freelancer',
+    // company: 'Tech Solutions Inc.',
+    duration: 'Dec 2023',
     description:
-      'Hands-on experience in full-stack development during internship period.',
+      'Designed and developed a responsive web application for a client, managing both UI/UX design and full-stack implementation using React',
     points: [
-      'Built REST APIs with Spring Boot',
-      'Wrote unit tests achieving 80% coverage',
-      'Collaborated with UI team on integration',
+      'Ensured cross-browser and cross-device compatibility',
+      'Deployed and hosted the application ',
     ],
   },
 ];
@@ -183,7 +183,7 @@ export default function Experience() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
         >
-          A timeline of my professional growth, from intern to building
+          A timeline of my professional growth, from freelance to building
           production-grade systems at scale.
         </motion.p>
 

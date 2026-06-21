@@ -10,8 +10,8 @@ const planetsData = [
   { name: 'Spring', icon: '/tech/spring.svg', distance: 2.5, speed: 0.8, size: 0.8, color: '#10b981' },
   { name: 'AWS', icon: '/tech/aws.svg', distance: 4.0, speed: 0.5, size: 0.7, color: '#f59e0b' },
   { name: 'Docker', icon: '/tech/docker.svg', distance: 5.5, speed: 0.3, size: 0.8, color: '#3b82f6' },
-  { name: 'MySQL', icon: '/tech/mysql.svg', distance: 7.0, speed: 0.2, size: 0.6, color: '#0ea5e9' },
-  { name: 'React', icon: '/tech/react.svg', distance: 8.5, speed: 0.15, size: 0.6, color: '#61dafb' },
+  { name: 'SQL', icon: '/tech/mysql.svg', distance: 7.0, speed: 0.2, size: 0.6, color: '#0ea5e9' },
+  { name: 'Maven', icon: '/tech/react.svg', distance: 8.5, speed: 0.15, size: 0.6, color: '#61dafb' },
   { name: 'Git', icon: '/tech/git.svg', distance: 10.0, speed: 0.1, size: 0.5, color: '#f43f5e' },
 ];
 
