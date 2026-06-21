@@ -48,15 +48,11 @@ export default function Hero() {
 
       <motion.div
         className="hero__content"
-        style={{ zIndex: 1, position: 'relative', marginTop: '15vh' }}
+        style={{ zIndex: 1, position: 'relative', marginTop: '28vh' }}
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <motion.p className="hero__subtitle" variants={itemVariants} style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '0 auto', textAlign: 'center', background: 'rgba(5, 5, 5, 0.4)', padding: '20px', borderRadius: '12px', backdropFilter: 'blur(8px)' }}>
-          I build high-performance software solutions with Java, Spring Boot &amp; AWS
-        </motion.p>
-
         <motion.div className="hero__cta-group" variants={itemVariants}>
           <button
             className="hero__cta hero__cta--primary"

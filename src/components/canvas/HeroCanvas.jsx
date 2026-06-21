@@ -1,10 +1,11 @@
 import { Suspense, useRef, useState, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Text3D, Center, Float, Sparkles, OrbitControls, Preload } from '@react-three/drei';
 import CanvasLoader from './Loader';
 
 const InteractiveText = ({ isMobile }) => {
   const textRef = useRef();
+  const { viewport } = useThree();
   
   // Parallax effect based on mouse movement
   useFrame((state) => {
@@ -20,12 +21,21 @@ const InteractiveText = ({ isMobile }) => {
     }
   });
 
+  // Calculate size to prevent horizontal overflow.
+  // "BALACHANDREGOWDA" has 17 characters.
+  // To fit inside viewport.width, the font size should be at most viewport.width * 0.85 / 13.
+  const maxBalaSize = (viewport.width * 0.85) / 13;
+  const balaSize = isMobile ? Math.min(0.4, maxBalaSize) : Math.min(0.7, maxBalaSize);
+  
+  // "SOFTWARE ENGINEER" has 17 characters.
+  const softwareSize = isMobile ? Math.min(0.2, maxBalaSize * 0.5) : Math.min(0.4, maxBalaSize * 0.5);
+
   return (
     <group ref={textRef}>
-      <Center position={[0, isMobile ? 1 : 0.5, 0]}>
+      <Center position={[0, isMobile ? 1.6 : 0.8, 0]}>
         <Text3D
           font="/fonts/helvetiker_bold.typeface.json"
-          size={isMobile ? 0.6 : 1.2}
+          size={balaSize}
           height={0.2}
           curveSegments={12}
           bevelEnabled
@@ -34,20 +44,20 @@ const InteractiveText = ({ isMobile }) => {
           bevelOffset={0}
           bevelSegments={5}
         >
-          BALA
+          BALACHANDREGOWDA
           <meshStandardMaterial
             color="#ffffff"
-            emissive="#00f2fe"
-            emissiveIntensity={0.5}
+            emissive="#1aacb3"
+            emissiveIntensity={0.3}
             roughness={0.1}
             metalness={0.8}
           />
         </Text3D>
       </Center>
-      <Center position={[0, isMobile ? 0 : -0.8, 0]}>
+      <Center position={[0, isMobile ? 0.6 : -0.1, 0]}>
         <Text3D
           font="/fonts/helvetiker_bold.typeface.json"
-          size={isMobile ? 0.3 : 0.5}
+          size={softwareSize}
           height={0.1}
           curveSegments={12}
           bevelEnabled

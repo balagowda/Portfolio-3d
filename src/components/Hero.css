@@ -152,10 +152,6 @@
     0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-.hero__cta--primary::before {
-  background: linear-gradient(135deg, #a78bfa, #915eff);
-}
-
 .hero__cta--primary:hover {
   box-shadow:
     0 6px 25px rgba(145, 94, 255, 0.5),
