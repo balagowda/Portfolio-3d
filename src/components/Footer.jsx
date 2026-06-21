@@ -1,16 +1,6 @@
 import { motion } from 'framer-motion';
 import './Footer.css';
 
-/* ---- Quick links data ---- */
-const quickLinks = [
-  { label: 'Home', href: '#hero' },
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Contact', href: '#contact' },
-];
-
 /* ---- Social links data ---- */
 const socialLinks = [
   {
@@ -74,18 +64,6 @@ export default function Footer() {
           <p className="footer__brand-tagline">
             Building the future, one line of code at a time.
           </p>
-        </div>
-
-        {/* Column 2: Quick Links */}
-        <div className="footer__nav">
-          <h4 className="footer__heading">Quick Links</h4>
-          <nav className="footer__links">
-            {quickLinks.map((link) => (
-              <a key={link.label} href={link.href} className="footer__link">
-                {link.label}
-              </a>
-            ))}
-          </nav>
         </div>
 
         {/* Column 3: Social */}

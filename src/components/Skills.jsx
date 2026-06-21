@@ -143,7 +143,7 @@ function SkillCard({ skill, color }) {
 export default function Skills() {
   return (
     <section id="skills" className="skills-section">
-      <div className="skills-container" style={{ display: 'flex', flexDirection: 'column', height: '100vh', padding: '100px 0' }}>
+      <div className="skills-container">
         {/* heading */}
         <motion.div
           className="skills-heading"
@@ -151,7 +151,6 @@ export default function Skills() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          style={{ flexShrink: 0, zIndex: 10 }}
         >
           <span className="skills-label">— What I Know</span>
           <h2 className="skills-title">
