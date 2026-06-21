@@ -1,5 +1,5 @@
 import { Suspense, useRef, useState, useEffect, useMemo } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, Preload, Float, Sparkles, Html, Decal, useTexture } from '@react-three/drei';
 import * as THREE from 'three';
 import CanvasLoader from './Loader';
@@ -95,36 +95,44 @@ const Planet = ({ data }) => {
   );
 };
 
+const OrbitGroup = () => {
+  const { viewport } = useThree();
+  
+  // The outermost planet is Git at distance 10.0 + size 0.5 = 10.5.
+  // The base diameter of the entire orbit system is 21.0 units.
+  const systemDiameter = 21.0;
+  
+  // Fit 90% of viewport width
+  const scaleWidth = (viewport.width * 0.9) / systemDiameter;
+  
+  // Fit 75% of viewport height (accounting for vertical foreshortening from 8/16 camera tilt)
+  const cosTilt = 16 / Math.sqrt(64 + 256);
+  const scaleHeight = (viewport.height * 0.75) / (systemDiameter * cosTilt);
+  
+  // Use the smaller scale to guarantee it fits both width and height constraints
+  const groupScale = Math.min(scaleWidth, scaleHeight);
+
+  return (
+    <group scale={groupScale}>
+      {planetsData.map((planet, idx) => (
+        <Planet key={idx} data={planet} />
+      ))}
+    </group>
+  );
+};
+
 const OrbitCanvas = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 768px)');
-    setIsMobile(mediaQuery.matches);
-    const handleMediaQueryChange = (event) => setIsMobile(event.matches);
-    mediaQuery.addEventListener('change', handleMediaQueryChange);
-    return () => mediaQuery.removeEventListener('change', handleMediaQueryChange);
-  }, []);
-
-  const cameraPosition = isMobile ? [0, 12, 28] : [0, 8, 20];
-  const groupScale = isMobile ? 0.55 : 0.85;
-
   return (
     <Canvas
       frameloop="always"
-      camera={{ position: cameraPosition, fov: 45 }}
+      camera={{ position: [0, 8, 16], fov: 45 }}
       gl={{ preserveDrawingBuffer: true, antialias: true }}
     >
       <Suspense fallback={<CanvasLoader />}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1.5} color="#00f2fe" />
         
-        {/* Render all planets inside a scaled group */}
-        <group scale={groupScale}>
-          {planetsData.map((planet, idx) => (
-            <Planet key={idx} data={planet} />
-          ))}
-        </group>
+        <OrbitGroup />
 
         {/* Background stars */}
         <Sparkles count={300} scale={20} size={2} speed={0.2} color="#7028e4" />
