@@ -23,16 +23,16 @@ const InteractiveText = ({ isMobile }) => {
 
   // Calculate size to prevent horizontal overflow.
   // "BALACHANDREGOWDA" has 17 characters.
-  // To fit inside viewport.width, the font size should be at most viewport.width * 0.85 / 13.
-  const maxBalaSize = (viewport.width * 0.85) / 13;
-  const balaSize = isMobile ? Math.min(0.4, maxBalaSize) : Math.min(0.7, maxBalaSize);
+  // To fit inside viewport.width, the font size should be at most viewport.width * 0.85 / 17.
+  const maxBalaSize = (viewport.width * 0.85) / 17;
+  const balaSize = isMobile ? Math.min(0.35, maxBalaSize) : Math.min(0.7, maxBalaSize);
   
   // "SOFTWARE ENGINEER" has 17 characters.
-  const softwareSize = isMobile ? Math.min(0.2, maxBalaSize * 0.5) : Math.min(0.4, maxBalaSize * 0.5);
+  const softwareSize = isMobile ? Math.min(0.15, maxBalaSize * 0.5) : Math.min(0.4, maxBalaSize * 0.5);
 
   return (
     <group ref={textRef}>
-      <Center position={[0, isMobile ? 1.6 : 0.8, 0]}>
+      <Center key={`bala-${isMobile}-${balaSize}`} position={[0, isMobile ? 0.8 : 0.8, 0]}>
         <Text3D
           font="/fonts/helvetiker_bold.typeface.json"
           size={balaSize}
@@ -54,7 +54,7 @@ const InteractiveText = ({ isMobile }) => {
           />
         </Text3D>
       </Center>
-      <Center position={[0, isMobile ? 0.6 : -0.1, 0]}>
+      <Center key={`software-${isMobile}-${softwareSize}`} position={[0, isMobile ? 0.46 : -0.1, 0]}>
         <Text3D
           font="/fonts/helvetiker_bold.typeface.json"
           size={softwareSize}
