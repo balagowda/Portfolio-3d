@@ -36,6 +36,7 @@ const InteractiveText = ({ isMobile }) => {
         <Text3D
           font="/fonts/helvetiker_bold.typeface.json"
           size={balaSize}
+          letterSpacing={isMobile ? 0.03 : 0}
           height={0.2}
           curveSegments={12}
           bevelEnabled
@@ -47,7 +48,7 @@ const InteractiveText = ({ isMobile }) => {
           BALACHANDREGOWDA
           <meshStandardMaterial
             color="#ffffff"
-            emissive="#1aacb3"
+            emissive="#22a1a8"
             emissiveIntensity={0.40}
             roughness={0.1}
             metalness={0.8}

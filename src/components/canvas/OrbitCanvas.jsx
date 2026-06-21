@@ -15,7 +15,7 @@ const planetsData = [
   { name: 'Git', icon: '/tech/git.svg', distance: 10.0, speed: 0.1, size: 0.5, color: '#f43f5e' },
 ];
 
-const Planet = ({ data }) => {
+const Planet = ({ data, isMobileOrTablet }) => {
   const meshRef = useRef();
   const groupRef = useRef();
   const [hovered, setHovered] = useState(false);
@@ -35,6 +35,10 @@ const Planet = ({ data }) => {
     }
   });
 
+  const isActive = isMobileOrTablet ? true : hovered;
+  const paddingStyle = isMobileOrTablet ? '3px 7px' : '4px 10px';
+  const fontSizeStyle = isMobileOrTablet ? '11px' : '13px';
+
   return (
     <group ref={groupRef} rotation={[0, randomOffset, 0]}>
       <group position={[data.distance, 0, 0]}>
@@ -43,13 +47,13 @@ const Planet = ({ data }) => {
             ref={meshRef}
             onPointerOver={() => setHovered(true)}
             onPointerOut={() => setHovered(false)}
-            scale={hovered ? 1.2 : 1}
+            scale={isMobileOrTablet ? 1.0 : (hovered ? 1.2 : 1)}
           >
             <sphereGeometry args={[data.size, 32, 32]} />
             <meshStandardMaterial
-              color={hovered ? data.color : '#aaaaaa'}
-              emissive={hovered ? data.color : '#000000'}
-              emissiveIntensity={0.2}
+              color={isActive ? data.color : '#aaaaaa'}
+              emissive={isActive ? data.color : '#000000'}
+              emissiveIntensity={isActive ? 0.45 : 0.2}
               roughness={0.2}
               metalness={0.8}
             />
@@ -62,17 +66,17 @@ const Planet = ({ data }) => {
             />
           </mesh>
           
-          {/* HTML label that shows on hover */}
-          {hovered && (
-            <Html distanceFactor={15} center>
+          {/* HTML label that shows on hover/active */}
+          {isActive && (
+            <Html distanceFactor={15} center position={isMobileOrTablet ? [0, data.size + 0.65, 0] : [0, 0, 0]}>
               <div style={{
                 background: 'rgba(5, 5, 5, 0.8)',
                 backdropFilter: 'blur(10px)',
-                padding: '4px 10px',
+                padding: paddingStyle,
                 borderRadius: '8px',
                 color: '#fff',
                 fontWeight: 'bold',
-                fontSize: '14px',
+                fontSize: fontSizeStyle,
                 border: `1px solid ${data.color}`,
                 whiteSpace: 'nowrap',
                 pointerEvents: 'none'
@@ -95,7 +99,7 @@ const Planet = ({ data }) => {
   );
 };
 
-const OrbitGroup = () => {
+const OrbitGroup = ({ isMobileOrTablet }) => {
   const { viewport } = useThree();
   
   // The outermost planet is Git at distance 10.0 + size 0.5 = 10.5.
@@ -115,13 +119,24 @@ const OrbitGroup = () => {
   return (
     <group scale={groupScale}>
       {planetsData.map((planet, idx) => (
-        <Planet key={idx} data={planet} />
+        <Planet key={idx} data={planet} isMobileOrTablet={isMobileOrTablet} />
       ))}
     </group>
   );
 };
 
 const OrbitCanvas = () => {
+  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
+
+  useEffect(() => {
+    // Detect mobile and tablet screens (up to 1024px width)
+    const mediaQuery = window.matchMedia('(max-width: 1024px)');
+    setIsMobileOrTablet(mediaQuery.matches);
+    const handleMediaQueryChange = (event) => setIsMobileOrTablet(event.matches);
+    mediaQuery.addEventListener('change', handleMediaQueryChange);
+    return () => mediaQuery.removeEventListener('change', handleMediaQueryChange);
+  }, []);
+
   return (
     <Canvas
       frameloop="always"
@@ -132,7 +147,7 @@ const OrbitCanvas = () => {
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 10, 5]} intensity={1.5} color="#00f2fe" />
         
-        <OrbitGroup />
+        <OrbitGroup isMobileOrTablet={isMobileOrTablet} />
 
         {/* Background stars */}
         <Sparkles count={300} scale={20} size={2} speed={0.2} color="#7028e4" />

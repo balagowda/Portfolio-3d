@@ -161,14 +161,12 @@ export default function Skills() {
           </p>
         </motion.div>
 
-        {/* 3D Orbit Canvas */}
         <motion.div
           className="skills-orbit-container"
           variants={sectionVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          style={{ flexGrow: 1, width: '100%', position: 'relative' }}
         >
           <OrbitCanvas />
         </motion.div>

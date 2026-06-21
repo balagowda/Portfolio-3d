@@ -66,7 +66,7 @@ export default function Hero() {
             onClick={() => handleScroll('contact')}
           >
             <span className="hero__cta-text">Contact Me</span>
-            <span className="hero__cta-icon" aria-hidden="true">✉</span>
+            <span className="hero__cta-icon" aria-hidden="true">✉️</span>
           </button>
         </motion.div>
       </motion.div>
